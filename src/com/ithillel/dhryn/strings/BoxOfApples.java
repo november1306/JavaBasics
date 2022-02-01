@@ -1,7 +1,5 @@
 package com.ithillel.dhryn.strings;
 
-import javax.swing.*;
-
 public class BoxOfApples {
 
     private int apples = 0;
@@ -14,7 +12,7 @@ public class BoxOfApples {
         return apples;
     }
 
-    public BoxOfApples getThisInstance () {
+    public BoxOfApples getThisInstance() {
         BoxOfApples newBox = new BoxOfApples();
         return newBox;
     }

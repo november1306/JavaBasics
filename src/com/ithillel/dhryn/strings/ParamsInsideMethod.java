@@ -1,16 +1,14 @@
 package com.ithillel.dhryn.strings;
 
-public class ParamsCheck {
+public class ParamsInsideMethod {
 
     public static void doCheck() {
         String text = "phrase";
+        String objText = new String("phrase");
+        BoxOfApples boxOfApples = new BoxOfApples();
 
         String resText = text.toUpperCase();
         System.out.println(resText);
-
-        String objText = new String("phrase");
-
-        BoxOfApples boxOfApples = new BoxOfApples();
         boxOfApples.setApples(5);
 
         updateText(text);
