@@ -1,6 +1,6 @@
 package com.ithillel.dhryn.enums;
 
-public class Report extends Object implements Comparable<Report> {
+public class Report implements Comparable<Report> {
     Seasons seasonDesc;
     String reportText;
 
