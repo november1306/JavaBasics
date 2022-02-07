@@ -12,7 +12,7 @@ public class MainSortingTreeMap {
 
         System.out.println(usersMap);
 
-        AppUserComparator appUserComparator = new AppUserComparator();
+        Comparator<AppUser> appUserComparator = new AppTypeComparator().thenComparing(new AppUserComparator());
         TreeMap <AppUser, String> usersMapWithComparator = new TreeMap<>(appUserComparator);
         usersMapWithComparator.putAll(usersMap);
         System.out.println("-------------------------------");

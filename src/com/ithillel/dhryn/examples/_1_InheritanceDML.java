@@ -1,16 +1,13 @@
 package com.ithillel.dhryn.examples;
 
-import java.util.List;
-
 public class _1_InheritanceDML {
     public _1_InheritanceDML() {
         Animal dog = new Dog();
         dog.printSounds();
         new Dog().printSounds();
-        new Cat().printSounds();
     }
 
-   public abstract class Animal {
+    public abstract class Animal {
         public abstract void printSounds();
 
         public void printEats() {
@@ -18,7 +15,7 @@ public class _1_InheritanceDML {
         }
     }
 
-    class Dog extends Animal  {
+    class Dog extends Animal {
         @Override
         public void printSounds() {
             System.out.println("Dog says GAVGAV");
@@ -29,13 +26,4 @@ public class _1_InheritanceDML {
         }
     }
 
-    class Cat extends Animal {
-        @Override
-        public void printSounds() {
-//            super.printSounds();
-        }
-        public void printEats() {
-            super.printEats();
-        }
-    }
 }
