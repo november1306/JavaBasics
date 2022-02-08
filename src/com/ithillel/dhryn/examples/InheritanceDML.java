@@ -1,7 +1,7 @@
 package com.ithillel.dhryn.examples;
 
-public class _1_InheritanceDML {
-    public _1_InheritanceDML() {
+public class InheritanceDML {
+    public InheritanceDML() {
         Animal dog = new Dog();
         dog.printSounds();
         new Dog().printSounds();

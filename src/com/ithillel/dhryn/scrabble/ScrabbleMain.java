@@ -1,41 +1,55 @@
 package com.ithillel.dhryn.scrabble;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Scanner;
 
 /**
- * input: aajkccce
+ * input: taaac
  * <p>
  * output:
- * ACE, CACA, CAECA, CAKE, CECA, JACK, JAKE, KAE, KEA
+ * ACT, ACTA, CAT
  */
 
 public class ScrabbleMain {
-    public static void main(String[] args) throws FileNotFoundException, IOException {
+    public static void main(String[] args) throws IOException {
 
         //read phrase from console
-        String phrase = "aajkccce";
+        String phrase = "taaac";
         System.out.println("input phrase of characters");
         Scanner scanner = new Scanner(System.in);
         phrase = scanner.nextLine();
+        phrase = phrase.toUpperCase();
 
         //Map of charecter count
-        //  a -> 2
-        //  j -> 1
-        //  k -> 1
-        //  c -> 3
-        //  e->1
+        //  t -> 1
+        //  a -> 3
+        //  c -> 1
         HashMap<Character, Integer> phraseCharCount = getCharacterCountMap(phrase);
 
         //read from dictionary line by line
-        BufferedReader reader = new BufferedReader(new FileReader("attachments/dictionary.txt"));
+        FileReader fileReader = new FileReader("attachments/dictionary.txt");
+        BufferedReader reader = new BufferedReader(fileReader);
+
         String word;
-        boolean canMakeWord = true;
+        boolean canMakeWord;
         while ((word = reader.readLine()) != null) {
             // check if we can make word
-            System.out.println(word);
+            canMakeWord = true;
+            HashMap<Character, Integer> wordCharCount = getCharacterCountMap(word);
+            for (char ch : wordCharCount.keySet()) {
+                int wordChCount = wordCharCount.get(ch);
+                int phraseChCount = phraseCharCount.containsKey(ch) ?
+                        phraseCharCount.get(ch) : 0;
+                if (wordChCount > phraseChCount)
+                    canMakeWord = false;
+            }
+            if (canMakeWord && word.length() > 2)
+                System.out.println("YES we can " + word);
         }
+
     }
 
     private static HashMap<Character, Integer> getCharacterCountMap(String phrase) {
@@ -49,7 +63,6 @@ public class ScrabbleMain {
             } else
                 phraseCharCount.put(ch, 1);
         }
-        System.out.println(phraseCharCount);
         return phraseCharCount;
     }
 
