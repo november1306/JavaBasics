@@ -11,7 +11,7 @@ public class CatchingExp {
         System.out.println(arrayOfNumbers[5]);
     }
 
-    public static int readFromFile() {
+    public static int readFromFile() throws IOException {
         int readedText = 0;
         FileReader reader = null;
         try {
@@ -22,7 +22,7 @@ public class CatchingExp {
             System.out.println("exception handled");
         } catch (IOException ex) {
             ex.printStackTrace();
-            System.out.println(ex.getStackTrace());
+            throw ex;
         } finally {
             System.out.println("finally block");
         }

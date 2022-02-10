@@ -3,7 +3,10 @@ package com.ithillel.dhryn.scrabble;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.*;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Scanner;
 
 /**
  * input: taaac
@@ -13,7 +16,8 @@ import java.util.*;
  */
 
 public class ScrabbleMain {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        System.out.println(System.getProperty("user.dir"));
 
         //read phrase from console
         String phrase = "taaac";
@@ -39,7 +43,7 @@ public class ScrabbleMain {
             }
         } catch (IOException ex) {
             System.err.println(" problem reading file from " + System.getProperty("user.dir") + "\\" + fileName);
-            ex.printStackTrace();
+            throw ex;
         }
 
         searchWordsExistInPhrase(phrase, wordsList);
